@@ -21,5 +21,12 @@
 	},
 	notifyError:function(msg) {
 		this.notify(msg, true);
+	},
+
+	// Makes sure that value is at least min and no greater than max
+	rangeClip:function(value, min, max) {
+		value = Math.min(value, max);
+		value = Math.max(value, min);
+		return value;
 	}
 }

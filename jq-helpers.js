@@ -57,6 +57,20 @@ var util = {
 		}
 	}
 }
+// Converts the page coordinates to coordinates
+// relative to the element's parent
+$.fn.convertToRelative = function(left, top) {
+	var offset = $(this.get(0).parentElement).offset();
+  
+  // Calculate relative pixel position, also taking into account
+  // scrolling of the window
+  var relativePixelPos = {
+    left: left - offset.left + window.scrollX,
+    top: top - offset.top + window.scrollY
+  }
+  return relativePixelPos;
+}
+
 // Returns a rectangle of an element 
 // based on its position and outer width/height
 $.fn.rectangle = function() {
