@@ -2,6 +2,24 @@
 * A small set of helper functions for Kattegat apps
 **/
 ;window.kattegat = {
+	// Small function to check browser
+	device: {
+	  android: function() {
+	      return navigator.userAgent.match(/Android/i);
+	  },
+	  ios: function() {
+	      return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+	  },
+	  opera: function() {
+	      return navigator.userAgent.match(/Opera Mini/i);
+	  },
+	  winphone: function() {
+	      return navigator.userAgent.match(/IEMobile/i);
+	  },
+	  mobile: function() {
+	      return (kattegat.device.android() || kattegat.device.ios() || kattegat.device.opera() || kattegat.device.winphone());
+	  }
+	},
 	notify: function(msg, isError) {
 		if (typeof isError == 'undefined') isError = false;
 		var cls = "toast";
