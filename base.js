@@ -53,13 +53,33 @@
 // See it in action above.
 function Smoother(samples) {
   this.data = new Array();
+  this.low = 99999999;
+  this.high = 0;
   for (var i=0;i<samples; i++) {
     this.data.push(0);
   }
 }
+Smoother.prototype.getIndexedData = function() {
+	var t = new Array();
+	for (var i = this.data.length - 1; i >= 0; i--) {
+		t.push([i+1, this.data[i]]);
+	};
+	return t;
+}
+Smoother.prototype.getData = function() {
+	return this.data;
+}
 Smoother.prototype.push = function(v) {
     this.data.shift();
     this.data.push(v);
+    if (v > this.high) this.high = v;
+    if (v < this.low) this.low =v;
+}
+Smoother.prototype.getHigh = function() {
+	return this.high;
+}
+Smoother.prototype.getLow = function() {
+	return this.low;
 }
 Smoother.prototype.get = function() {
   var count = 0;
@@ -69,4 +89,3 @@ Smoother.prototype.get = function() {
   count = count / this.data.length;
   return count;
 }
- 
