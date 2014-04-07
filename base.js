@@ -20,6 +20,8 @@
 	      return (kattegat.device.android() || kattegat.device.ios() || kattegat.device.opera() || kattegat.device.winphone());
 	  }
 	},
+	// Flashes a message for the user.
+	// if isError, shows it with the 'error' class
 	notify: function(msg, isError) {
 		if (typeof isError == 'undefined') isError = false;
 		var cls = "toast";
@@ -37,6 +39,7 @@
 				$(this).remove();
 			});
 	},
+	// Flashes an error message for the user
 	notifyError:function(msg) {
 		this.notify(msg, true);
 	},
@@ -50,7 +53,7 @@
 }
 
 // Helper class to smooth data values.
-// See it in action above.
+// It does this over a window of size 'samples'
 function Smoother(samples) {
   this.data = new Array();
   this.low = 99999999;
@@ -59,6 +62,9 @@ function Smoother(samples) {
     this.data.push(0);
   }
 }
+// Return the data as an indexed array:
+// [ [1, datapoint1], [2, datapoint2] ...]
+// Made so that smoother can fit into a plotting library
 Smoother.prototype.getIndexedData = function() {
 	var t = new Array();
 	for (var i = this.data.length - 1; i >= 0; i--) {
@@ -66,21 +72,26 @@ Smoother.prototype.getIndexedData = function() {
 	};
 	return t;
 }
+// Return the raw data
 Smoother.prototype.getData = function() {
 	return this.data;
 }
+// Push a new data value into the window (removing the oldest)
 Smoother.prototype.push = function(v) {
     this.data.shift();
     this.data.push(v);
     if (v > this.high) this.high = v;
     if (v < this.low) this.low =v;
 }
+// Return highest number in current window
 Smoother.prototype.getHigh = function() {
 	return this.high;
 }
+// Return smallest number in current window
 Smoother.prototype.getLow = function() {
 	return this.low;
 }
+// Return average of current window
 Smoother.prototype.get = function() {
   var count = 0;
   for (var i=0;i<this.data.length; i++) {
@@ -89,3 +100,11 @@ Smoother.prototype.get = function() {
   count = count / this.data.length;
   return count;
 }
+$(document).on("ready", function() {
+	// If document has
+	//		kattegat-livereload="true"
+	// attribute, we'll attempt to get the livereload script
+	if ($("body").attr("kattegat-livereload") == "true") {
+	 	$.getScript("http://" + (location.host || 'localhost').split(':`')[0] + ':35729/livereload.js');
+	}
+})
