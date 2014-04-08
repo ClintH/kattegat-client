@@ -50,6 +50,28 @@
 		value = Math.max(value, min);
 		return value;
 	}
+
+	// Scales a number from one range to another
+	rangeScale:function(value, existingMin, existingMax, newMin, newMax) {
+		// Clip number to range
+		if (value < existingMin) value = existingMin;
+		if (value > existingMax) value = existingMax;
+		
+		// Convert to a percentage relative to existing range
+		value = value - existingMin;
+		var existingRange = existingMax - existingMin;
+		var pc = (value - existingMin)/existingRange;
+		
+		// Apply tp new range
+		var newRange = newMax - newMin;
+		value =  pc*newRange;
+		value += newMin; // And boost to min
+
+		// Shouldn't go over new range, but for our sanity...
+		if (value < newMin) value = newMin;
+		if (value > newMax) value = newMax;
+		return value;
+	}
 }
 
 // Helper class to smooth data values.
@@ -105,6 +127,6 @@ $(document).on("ready", function() {
 	//		kattegat-livereload="true"
 	// attribute, we'll attempt to get the livereload script
 	if ($("body").attr("kattegat-livereload") == "true") {
-	 	$.getScript("http://" + (location.host || 'localhost').split(':`')[0] + ':35729/livereload.js');
+	 	$.getScript("http://" + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js');
 	}
 })
