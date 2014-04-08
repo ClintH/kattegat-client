@@ -56,12 +56,12 @@
 		// Clip number to range
 		if (value < existingMin) value = existingMin;
 		if (value > existingMax) value = existingMax;
-		
+
 		// Convert to a percentage relative to existing range
 		value = value - existingMin;
 		var existingRange = existingMax - existingMin;
 		var pc = (value - existingMin)/existingRange;
-		
+
 		// Apply tp new range
 		var newRange = newMax - newMin;
 		value =  pc*newRange;
