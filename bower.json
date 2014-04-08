@@ -1,7 +1,7 @@
 {
 	"name": "kattegat-client",
-	"version": "0.0.9",
-    "main": ["base.js", "jq-helpers.js", "audio.js"],
+	"version": "0.0.11",
+    "main": ["base.js", "jq-helpers.js", "audio.js", "compatibility.js"],
 	"dependencies": {
         "jquery": "2.0.3",
         "lodash": "2.4.1",
