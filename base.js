@@ -49,7 +49,7 @@
 		value = Math.min(value, max);
 		value = Math.max(value, min);
 		return value;
-	}
+	},
 
 	// Scales a number from one range to another
 	rangeScale:function(value, existingMin, existingMax, newMin, newMax) {
