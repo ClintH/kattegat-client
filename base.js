@@ -56,12 +56,12 @@
 		// Clip number to range
 		if (value < existingMin) value = existingMin;
 		if (value > existingMax) value = existingMax;
-		
+
 		// Convert to a percentage relative to existing range
 		value = value - existingMin;
 		var existingRange = existingMax - existingMin;
 		var pc = (value - existingMin)/existingRange;
-		
+
 		// Apply tp new range
 		var newRange = newMax - newMin;
 		value =  pc*newRange;
@@ -78,8 +78,6 @@
 // It does this over a window of size 'samples'
 function Smoother(samples) {
   this.data = new Array();
-  this.low = 99999999;
-  this.high = 0;
   for (var i=0;i<samples; i++) {
     this.data.push(0);
   }
@@ -102,16 +100,14 @@ Smoother.prototype.getData = function() {
 Smoother.prototype.push = function(v) {
     this.data.shift();
     this.data.push(v);
-    if (v > this.high) this.high = v;
-    if (v < this.low) this.low =v;
 }
 // Return highest number in current window
 Smoother.prototype.getHigh = function() {
-	return this.high;
+	return Math.max.apply(Math, this.data);
 }
 // Return smallest number in current window
 Smoother.prototype.getLow = function() {
-	return this.low;
+	return Math.min.apply(Math, this.data);
 }
 // Return average of current window
 Smoother.prototype.get = function() {
