@@ -18,11 +18,13 @@ var util = {
 		if (a.top > b.top + b.height) return false;
 		return true;
 	},
-	// Returns a rectangle from a object, jQuery selector or array
+	// Returns a rectangle from a object, Element, jQuery selector or array
 	getRectangle:function(pointSelectorOrElement) {
 		if (typeof pointSelectorOrElement == 'string') {
 			return $(pointSelectorOrElement).rectangle();
 		} else if (typeof pointSelectorOrElement == 'object') {
+			if (pointSelectorOrElement instanceof Element)
+                return $(pointSelectorOrElement).rectangle();
 			if (pointSelectorOrElement instanceof jQuery) 
 				return pointSelectorOrElement.rectangle();
 			if (pointSelectorOrElement instanceof Array) {
@@ -98,16 +100,21 @@ $.fn.rectangleOffset = function() {
 
 // Returns true if the element(s) intersects
 $.fn.intersects = function(point) {
-	var pointRect = util.getRectangle(point);
-	var match = false;
-	this.each(function(index, element) {
-		$e = $(element);
-		var rect = $e.rectangle();
-		if (util.rectIntersects(pointRect, rect)) {
-			match = true;
-		}
-	})
-	return match;
+    point = $(point);
+    var me = this;
+    var match = false;
+    point.each(function(i, pointElement) {
+        var pointRect = util.getRectangle(pointElement);
+        me.each(function(index, element) {
+            if (element == pointElement) return; // ignore self
+            $e = $(element);
+            var rect = $e.rectangle();
+            if (util.rectIntersects(pointRect, rect)) {
+                match = true;
+            }
+        });
+    });
+    return match;
 }
 
 // Returns a jQuery collection of all elements which intersect point
