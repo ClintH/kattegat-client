@@ -113,6 +113,10 @@ Smoother.prototype.getHigh = function() {
 Smoother.prototype.getLow = function() {
 	return this.low;
 }
+// Return the difference between newest and oldest data point
+Smoother.prototype.getGradient = function() {
+	return this.data[this.data.length-1] - this.data[0];
+}
 // Return average of current window
 Smoother.prototype.get = function() {
   var count = 0;
