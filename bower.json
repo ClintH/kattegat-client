@@ -1,6 +1,7 @@
 {
 	"name": "kattegat-client",
-	"version": "0.0.14",
+	"version": "0.0.15",
+    "author": "Clint Heyer",
     "main": ["base.js", "jq-helpers.js", "audio.js", "compatibility.js"],
 	"mainFiles": {
         "jsfeat": ["build/jsfeat-min.js"]
