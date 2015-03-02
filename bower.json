@@ -1,23 +1,24 @@
 {
 	"name": "kattegat-client",
-	"version": "0.0.13",
+	"version": "0.0.14",
     "main": ["base.js", "jq-helpers.js", "audio.js", "compatibility.js"],
 	mainFiles: {
         jsfeat: ["build/jsfeat-min.js"]
     },
     "dependencies": {
-        "jquery": "2.0.3",
-        "lodash": "2.4.1",
-        "geolib": "1.3.5",
-        "pointerevents-polyfill": "0.1.1",
+        "jquery": "2.1.3",
+        "lodash": "3.4.0",
+        "geolib": "2.0.15",
+        "pointerevents-polyfill": "0.2.0",
         "pure":"*",
-        "jquery.transit": "0.9.9",
-        "hammerjs": "1.0.6",
+        "jquery.transit": "0.9.12",
+        "hammerjs": "2.0.4",
         "tinycolor": "0.9.16",
-        "momentjs" : "2.5.1",
-        "jquery-hammerjs": "1.0.1",
-        "flot": "0.8.2",
+        "momentjs" : "2.9.0",
+        "jquery-hammerjs": "2.0.0",
+        "flot": "0.8.3",
         "leaflet-dist": "0.7.2",
+        "smoothie": "1.27.0",
         "jsfeat":"*"
     }
 }
