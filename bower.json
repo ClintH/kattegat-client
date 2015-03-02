@@ -2,8 +2,8 @@
 	"name": "kattegat-client",
 	"version": "0.0.14",
     "main": ["base.js", "jq-helpers.js", "audio.js", "compatibility.js"],
-	mainFiles: {
-        jsfeat: ["build/jsfeat-min.js"]
+	"mainFiles": {
+        "jsfeat": ["build/jsfeat-min.js"]
     },
     "dependencies": {
         "jquery": "2.1.3",
