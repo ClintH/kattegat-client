@@ -1,6 +1,6 @@
 !{
 	"name": "kattegat-client",
-	"version": "0.1.1",
+	"version": "0.1.2",
     "author": "Clint Heyer",
     "main": ["base.js", "jq-helpers.js", "audio.js", "compatibility.js"],
 	"mainFiles": {
