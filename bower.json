@@ -1,14 +1,14 @@
-{
+!{
 	"name": "kattegat-client",
-	"version": "0.1.0",
+	"version": "0.1.1",
     "author": "Clint Heyer",
     "main": ["base.js", "jq-helpers.js", "audio.js", "compatibility.js"],
 	"mainFiles": {
         "jsfeat": ["build/jsfeat-min.js"]
     },
     "dependencies": {
-        "jquery": "2.2.1",
-        "lodash": "4.5.1",
+        "jquery": "2.2.2",
+        "lodash": "4.6.1",
         "geolib": "2.0.18",
         "pointerevents-polyfill": "0.2.0",
         "pure":"*",
