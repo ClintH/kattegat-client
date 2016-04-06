@@ -10,3 +10,11 @@ $ bower install kattegat-client
 
 (It's installed for you automatically when you generate a Kattegat project)
 
+## Build
+
+To build:
+
+```
+npm install && grunt
+```
+
