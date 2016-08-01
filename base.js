@@ -131,6 +131,8 @@ $(document).on("ready", function() {
 	//		kattegat-livereload="true"
 	// attribute, we'll attempt to get the livereload script
 	if ($("body").attr("kattegat-livereload") == "true") {
-	 	$.getScript("http://" + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js');
+		if (location.host.indexOf('.io') > 0 || location.host.indexOf('.net') > 0 || location.host.indexof('.com') > 0 || location.host.indexOf('.net') > 0) {
+			console.log("Live-reload disabled for hosted sketch")
+		} else $.getScript("http://" + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js');
 	}
 })
