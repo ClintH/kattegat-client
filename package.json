@@ -1,5 +1,6 @@
 {
   "name": "kattegat-client",
+  "version": "0.1.6",
   "description": "Kattegat client-side",
   "author": {
     "name": "Clint Heyer",
