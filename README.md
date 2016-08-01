@@ -12,9 +12,11 @@ $ bower install kattegat-client
 
 ## Build
 
+If you want to modify the internals of `kattegat-client`, it's necessary to build it afterward with grunt.
+
 To build:
 
 ```
-npm install && grunt
+$ npm install && grunt
 ```
 
